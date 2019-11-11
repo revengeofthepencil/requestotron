@@ -5,6 +5,8 @@ npm-debug.log*
 
 *.iml
 
+.idea
+
 # Runtime data
 pids
 *.pid
