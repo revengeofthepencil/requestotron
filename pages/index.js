@@ -40,34 +40,9 @@ const getPosts = () => {
     ];
 }
 
-const doThing = () => {
-    console.log("do the thing")
-    if ( 1  < 0 ) {
-        return
-    }
 
-    const name = "Johnny Cash"
-    const email = "john@cash.com"
-    const password = "aboynanmedsue"
-
-    try {
-        axioswal
-            .post('/api/users', {
-                name,
-                email,
-                password,
-            })
-            .then((data) => {
-                console.log("made it back!")
-            });
-
-    } catch (error) {
-        console.log("error!")
-    }
-}
 
 const Index = () => {
-    doThing();
     return (
         <Layout>
 
