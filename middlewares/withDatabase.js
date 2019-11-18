@@ -1,7 +1,8 @@
 import { MongoClient } from 'mongodb';
 
-const mongoURI = process.env.MONGODB_URI ? process.env.MONGODB_URI : ''
-const client = new MongoClient(mongoURI, { useNewUrlParser: true });
+
+console.log("mongoURI = " + process.env.MONGODB_URI);
+const client = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 const withDatabase = handler => (req, res) => {
     if (!client.isConnected()) {
