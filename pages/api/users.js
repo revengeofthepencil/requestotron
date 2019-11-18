@@ -1,22 +1,50 @@
 import nextConnect from 'next-connect';
 import bcrypt from 'bcryptjs';
-import middleware from '../../middlewares/middleware';
+import middleware from '../../middlewares/withMiddleware';
 const handler = nextConnect();
 
-handler.use(middleware);
+//handler.use(middleware);
+
+
+handler.get((req, res) => {
+    res.status(201).send({
+        status: 'ok',
+        message: 'woo hoo! you made it!',
+    });
+});
 
 handler.post((req, res) => {
     const { email, name, password } = req.body;
 
-    /*
-    // TODO: put this back
-    if (!isEmail(email)) {
-        return res.send({
-            status: 'error',
-            message: 'The email you entered is invalid.',
+    console.log("get it!! body = " + JSON.stringify(req.body));
+
+    return res.send({
+        status: 'ok',
+        repose : {
+            data : {'me' : 'you'}
+        },
+        data: {
+            isLoggedIn: true
+        },
+        message: 'you made it!',
+    });
+
+});
+/*
+handler.post((req, res) => {
+    const { email, name, password } = req.body;
+
+    console.log("get it!! body = " + JSON.stringify(req.body));
+
+    if (1 > 0 ) {
+        res.status(201).send({
+            status: 'ok',
+            message: 'test passed',
         });
+
+        return
     }
-    */
+
 
     return req.db
         .collection('users')
@@ -44,5 +72,5 @@ handler.post((req, res) => {
             message: error.toString(),
         }));
 });
-
+*/
 export default handler;

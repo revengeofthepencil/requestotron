@@ -1,5 +1,7 @@
 import Layout from '../templates/MyLayout';
 import Link from 'next/link';
+import axioswal from 'axioswal';
+import fetch from "isomorphic-unfetch/index";
 
 
 const PostLink = props => {
@@ -38,19 +40,47 @@ const getPosts = () => {
     ];
 }
 
-const Index = () => (
-  <Layout>
+const doThing = () => {
+    console.log("do the thing")
+    if ( 1  < 0 ) {
+        return
+    }
 
-      <h1>My Blog</h1>
-      <ul>
-          {getPosts().map(post => (
-              <PostLink key={post.id} id={post.id} title={post.title} />
+    const name = "Johnny Cash"
+    const email = "john@cash.com"
+    const password = "aboynanmedsue"
 
-          ))}
-      </ul>
+    try {
+        axioswal
+            .post('/api/users', {
+                name,
+                email,
+                password,
+            })
+            .then((data) => {
+                console.log("made it back!")
+            });
+
+    } catch (error) {
+        console.log("error!")
+    }
+}
+
+const Index = () => {
+    doThing();
+    return (
+        <Layout>
+
+            <h1>My Blog</h1>
+            <ul>
+                {getPosts().map(post => (
+                    <PostLink key={post.id} id={post.id} title={post.title} />
+
+                ))}
+            </ul>
 
 
-      <style jsx>{`
+            <style jsx>{`
         h1,
         a {
           font-family: 'Arial';
@@ -74,8 +104,9 @@ const Index = () => (
           opacity: 0.6;
         }
       `}</style>
-  </Layout>
-);
+        </Layout>
+    );
+}
 
 
 export default Index;
