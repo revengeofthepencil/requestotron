@@ -20,9 +20,6 @@ handler.post((req, res) => {
 
     return res.send({
         status: 'ok',
-        repose : {
-            data : {'me' : 'you'}
-        },
         data: {
             isLoggedIn: true
         },
