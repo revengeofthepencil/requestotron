@@ -3,8 +3,9 @@ logs
 *.log
 npm-debug.log*
 
-*.iml
 
+*.iml
+.idea/*
 .idea
 
 # Runtime data
